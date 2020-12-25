@@ -1,0 +1,117 @@
+NOTE: some of these are OLD and DO NOT DESERVE your ATTENTION. ATTENTION!
+
+# UnNatural Semantic Metalanguage: a reference document
+
+## Examples
+
+### Motive Expectation
+
+```unsm
+(def! (motive-expectation person's person'l words'c)
+      (some! (any!'thing)
+             (let! 'wanted 
+                   (some! (words'words)
+                          <(say 'l 'words)
+                           (about 'words 'thing)>)
+                   (want 's 'wanted)
+                   (like 'c
+                         <(want 's 'wanted)
+                          (because (say 's 'c)
+                                   (believe 's 'wanted))>))))
+```
+
+```unsm-alt
+def! (motive-expectation person's person'l words'c)
+  some! any!'thing
+    some! words'words
+      let! 'wanted
+          : say 'l words
+            about 'words 'thing
+        want 's 'wanted
+        like 'c
+         : want 's 'wanted
+           because (say 's 'c)
+                   (believe 's 'wanted);
+```
+
+```nsm
+Speaker wants Listener to say something about something else
+Speaker says something like:
+  I want you to say something about this thing
+  Because I say this, I think you will do this
+```
+
+### The lexeme ‘only’
+
+**UNSM**:
+
+```unsm
+(def! (only 'τ'x unary!'τ 'f)
+      (type! 'f 'τ)
+      <('f 'x)
+       (all! ('τ'other)
+             (different 'x 'other)
+             (not ('f 'other)))>)
+```
+
+**NSM**:
+
+```nsm
+X is the *only* τ that F-s :=
+  X is a τ
+  X F-s
+  all τ-s that are not X do not F
+```
+
+
+```unsm-test
+def! (only 'τ'x any-type!'τ (type! 'τ)'f)
+  : 'f 'x
+    all! 'τ'other
+      not (same 'x 'other)
+      not ('f 'other);
+
+def! (only 'τ'x any-type!'τ (type! 'τ)'f)
+  : any-type! 'τ
+    (type! 'f 'τ)
+    'τ 'x
+    'f 'x
+  all! 'τ'other
+    : not (same 'x 'other)
+      not ('f 'other);
+```
+
+mind (English) =
+
+one of two parts of a person
+people cannot see it, people cannot touch it
+because of this part, a person can think
+because of this part, a person can know things
+
+def! (mind any!'mind person!'whose)
+  let! 'parthood (λ! (part 'whose)'part yes!) % this requires specificity; ‘the’? 😭
+    two 'parthood
+    'parthood 'mind
+    alternate! 'it (see touch)
+      (people! 'they (not (can 'they ('it 'they 'mind))))
+    alternate! 'it (think know)
+      (can 'whose (some! any!'thing 'it 'whose 'thing));
+
+lie =
+I want someone to think something
+I know this something is not true
+I say something to this someone
+I say something like: 'this something is true'
+because of this this someone might now think something, as I wanted
+
+def! (lie person'liar words'lie person'liee)
+  let! words'disinformation
+    want 'liar (know 'liee 'disinformation)
+    know 'liar (not (true 'disinformation))
+    some! words'said
+      say-to 'liar 'said 'liee
+      let! 'cause  (like 'said (true 'disinformation))
+      let! 'result (possible (think 'liee 'disinformation))
+        'cause
+        because 'cause 'result
+        want 'liar 'result;
