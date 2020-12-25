@@ -29,7 +29,7 @@ UNSM is a strongly language. This is for two reasons:
    that can only be substantiated within a specific domain; there is strong
    emphasis put on the distinction between category errors and falsehoods
    (which are fully applicable to human cognition, not to mention that they
-   almost directly correspond to topic and focus).
+   almost directly correspond to topic and focus [TODO: bitch about sequent calculus]).
 
 ## The specification itself
 
@@ -169,10 +169,10 @@ Type hints are expanded into preamble items at compile time – for example,
 
 expands to
 
-> **def!** (only *'x* *'τ* *'f*) <sup>% Untyped bindings</sup>
->   (*'τ 'x*)
->   (**anytype!** *'τ*)
->   (**type!** *'f* *'τ*) <sup>% Preamble ends here – no more bindings to restrict</sup>
+> **def!** (only *'x* *'τ* *'f*) <sub>% Untyped bindings</sub>  
+>   (*'τ 'x*)  
+>   (**anytype!** *'τ*)  
+>   (**type!** *'f* *'τ*) <sub>% Preamble ends here – no more bindings to restrict</sub>  
 >   [body…]
 
 ### Definitions
